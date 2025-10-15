@@ -4,4 +4,4 @@
 Этот репозиторий является каркасом для будущего веб-приложения.
 
 ## Ссылки
-- [Публичная страница на GitHub Pages](https://meatball1388.github.io/my-test/)
+- [Публичная страница на GitHub Pages](https://meatball1388.github.io/my-project/)

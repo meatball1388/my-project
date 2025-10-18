@@ -295,6 +295,13 @@ body {
     margin: 0 auto;
 }
 
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
 .contact-card {
     background: white;
     padding: 30px;
@@ -376,3 +383,115 @@ body {
     padding: 30px; 
     margin-top: 50px; 
 }
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+dialog {
+    padding: 1.5rem;
+    border: none;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90vw;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+dialog::backdrop {
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+}
+
+dialog h2 {
+    color: #2c3e50;
+    margin: 0 0 1.5rem 0;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ===== СТИЛИ ФОРМЫ В МОДАЛКЕ ===== */
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+dialog label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+dialog input,
+dialog select,
+dialog textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+dialog input:focus,
+dialog select:focus,
+dialog textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+dialog small {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-top: -0.5rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.form-actions button {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-actions button[type="button"] {
+    background: #95a5a6;
+    color: white;
+}
+
+.form-actions button[type="submit"] {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+}
+
+.form-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* ===== ПОДСВЕТКА ОШИБОК ===== */
+[aria-invalid="true"] {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1) !important;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 600px) {
+    dialog {
+        padding: 1rem;
+        margin: 1rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+}
+

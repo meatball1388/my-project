@@ -9,35 +9,59 @@
 </head>
 
 <body>
-    <div class="page-container">
-        <div class="header">Хэдер</div>
-        <div class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+    <div class="page">
+
+        <header class="header">
+            <h1 class="header__title">Практические работы</h1>
+            <p class="header__group">Алёхин Алексей Витальевич — ЭФБО-07-24</p>
+        </header>
+
+        <nav class="nav nav--main">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="news.html">Новости</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="practices.html">Практики</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="goods.html">Товары</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
             </ul>
-        </div>
-        <div class="content">
-            <h1 class="page-title">Практические работы</h1>
-            <div class="practices-container">
-                <div class="practice-card">
-                    <h3 class="practice-title">Практическая работа №1</h3>
-                    <p class="practice-desc">Введение в HTML разметку</p>
+        </nav>
+
+        <main class="main">
+            <section class="practices">
+                <h2 class="practices__title">Практические работы</h2>
+
+                <div class="practices__list">
+                    <article class="practice-card">
+                        <h3 class="practice-card__title">Практическая работа №1</h3>
+                        <p class="practice-card__desc">Введение в HTML разметку</p>
+                    </article>
+
+                    <article class="practice-card">
+                        <h3 class="practice-card__title">Практическая работа №2</h3>
+                        <p class="practice-card__desc">Основы CSS стилизации</p>
+                    </article>
+
+                    <article class="practice-card">
+                        <h3 class="practice-card__title">Практическая работа №3</h3>
+                        <p class="practice-card__desc">Адаптивная верстка</p>
+                    </article>
                 </div>
-                <div class="practice-card">
-                    <h3 class="practice-title">Практическая работа №2</h3>
-                    <p class="practice-desc">Основы CSS стилизации</p>
-                </div>
-                <div class="practice-card">
-                    <h3 class="practice-title">Практическая работа №3</h3>
-                    <p class="practice-desc">Адаптивная верстка</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer">Футер</div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">&copy; 2025 Алёхин Алексей Витальевич, ЭФБО-07-24</p>
+        </footer>
     </div>
 </body>
 

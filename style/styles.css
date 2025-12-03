@@ -123,29 +123,44 @@ body {
 } 
  
 /* ===== НАВЫКИ ===== */
-.skills-container { 
-    display: flex; 
-    justify-content: center; 
-    flex-wrap: wrap; 
-    gap: 15px; 
-    margin: 30px 0; 
-} 
- 
-.skill-tag { 
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
-    color: white; 
-    padding: 12px 25px; 
-    border-radius: 25px; 
-    font-weight: 600; 
-    font-size: 14px; 
-    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3); 
-    transition: all 0.3s ease; 
-} 
- 
-.skill-tag:hover { 
-    transform: translateY(-3px); 
-    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4); 
-} 
+
+.skills-container {
+    margin: 40px 0;
+}
+
+.skills-container h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 260px); /* две фиксированные колонки */
+    gap: 25px 60px;                          /* вертикальный и горизонтальный отступы */
+    justify-content: center;                 /* выравниваем сетку по центру */
+}
+
+.skill-tag {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 18px 0;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 12px 30px rgba(79, 172, 254, 0.45);
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 260px;                        /* ширина как у колонки */
+}
+
+.skill-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 35px rgba(79, 172, 254, 0.55);
+}
+
  
 /* ===== ОПЫТ РАБОТЫ ===== */
 .experience-section { 

@@ -10,8 +10,11 @@
 
 <body>
   <div class="page-container">
-    <div class="header">Хэдер</div>
-    <div class="nav">
+    <header class="header">
+      <h1>Алёхин Алексей Витальевич</h1>
+    </header>
+
+    <nav class="nav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
         <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
@@ -19,44 +22,54 @@
         <li class="nav-item"><a class="nav-link" href="pages/goods.html">Товары</a></li>
         <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
       </ul>
-    </div>
-    <div class="content">
-      <div class="profile-header">
-        <h1 class="profile-title">Информация об авторе:</h1>
+    </nav>
+
+    <main class="content">
+      <article class="profile-header">
+        <h1 class="profile-title">Информация об авторе</h1>
         <img class="profile-photo" src="images/photo1.webp" alt="Фото автора">
         <h2 class="profile-name">Алёхин Алексей Витальевич</h2>
-        <p class="profile-group">ЭФБО-12-24</p>
-      </div>
+        <p class="profile-group">ЭФБО-07-24</p>
+      </article>
 
-      <div class="about-me">
+      <section class="about-me">
+        <h2>Обо мне</h2>
         <p>Меня зовут Вито Скалетта. Я родился на Сицилии, в 25-м году. Это — наша семья. Стою с родителями и сестрой
           Франческой.</p>
-      </div>
+      </section>
 
-      <div class="skills-container">
-        <div class="skill-tag"> Жму 100кг от пяток</div>
-        <div class="skill-tag"> Могу не дышать чуть больше 3 секунд</div>
-        <div class="skill-tag"> Сыркал баска</div>
-        <div class="skill-tag"> бабынбубынбубс</div>
-      </div>
+      <section class="skills-container">
+        <h2>Мои навыки</h2>
+        <div class="skills-grid">
+          <div class="skill-tag">Жму 100кг от пяток</div>
+          <div class="skill-tag">Могу не дышать чуть больше 3 секунд</div>
+          <div class="skill-tag">Сыркал баска</div>
+          <div class="skill-tag">бабынбубынбубс</div>
+        </div>
+      </section>
 
-      <div class="experience-section">
+      <section class="experience-section">
         <h2 class="section-title">Мой опыт работы</h2>
-        <div class="experience-card">
-          <h3 class="experience-title">Perhot`inc:</h3>
-          <p class="experience-desc">Соберал перхоть с пола.</p>
+        <div class="experience-grid">
+          <article class="experience-card">
+            <h3 class="experience-title">Perhot`inc:</h3>
+            <p class="experience-desc">Соберал перхоть с пола.</p>
+          </article>
+          <article class="experience-card">
+            <h3 class="experience-title">Точилка рулит:</h3>
+            <p class="experience-desc">Работал точилкой, я грыз карандаши.</p>
+          </article>
+          <article class="experience-card">
+            <h3 class="experience-title">Рэп:</h3>
+            <p class="experience-desc">Работал рэпером. Читал и пел.</p>
+          </article>
         </div>
-        <div class="experience-card">
-          <h3 class="experience-title">Точилка рулит:</h3>
-          <p class="experience-desc">Работал точилкой, я грыз карандаши.</p>
-        </div>
-        <div class="experience-card">
-          <h3 class="experience-title">Рэп:</h3>
-          <p class="experience-desc">Работал рэпером. Читал и пел.</p>
-        </div>
-      </div>
-    </div>
-    <div class="footer">Футер</div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Алёхин Алексей Витальевич, ЭФБО-07-24</p>
+    </footer>
   </div>
 </body>
 

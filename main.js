@@ -1,10 +1,13 @@
-// Модальное окно
-const dlg = document.getElementById('contactDialog');
-const openBtn = document.getElementById('openDialog');
-const closeBtn = document.getElementById('closeDialog');
-const form = document.getElementById('contactForm');
+// ================== МОДАЛЬНОЕ ОКНО КОНТАКТОВ ==================
+
+const dlg       = document.getElementById('contactDialog');
+const openBtn   = document.getElementById('openDialog');
+const closeBtn  = document.getElementById('closeDialog');
+const form      = document.getElementById('contactForm');
+
 let lastActive = null;
 
+// Открытие модального окна
 if (openBtn && dlg) {
     openBtn.addEventListener('click', () => {
         lastActive = document.activeElement;
@@ -13,27 +16,32 @@ if (openBtn && dlg) {
     });
 }
 
+// Закрытие по кнопке "Отмена"
 if (closeBtn && dlg) {
-    closeBtn.addEventListener('click', () => dlg.close('cancel'));
-}
-
-if (dlg) {
-    dlg.addEventListener('close', () => { 
-        lastActive?.focus(); 
+    closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        dlg.close('cancel');
     });
 }
 
-// Валидация формы
+// Возврат фокуса после закрытия
+if (dlg) {
+    dlg.addEventListener('close', () => {
+        lastActive?.focus();
+    });
+}
+
+// ================== ВАЛИДАЦИЯ ФОРМЫ ==================
+
 if (form) {
     form.addEventListener('submit', (e) => {
-        // 1) Сброс кастомных сообщений
+        // Сброс кастомных сообщений
         [...form.elements].forEach(el => el.setCustomValidity?.(''));
 
-        // 2) Проверка встроенных ограничений
+        // Базовая HTML5-валидация
         if (!form.checkValidity()) {
             e.preventDefault();
 
-            // Пример: таргетированное сообщение
             const email = form.elements.email;
             if (email?.validity.typeMismatch) {
                 email.setCustomValidity('Введите корректный e-mail, например name@example.com');
@@ -41,60 +49,51 @@ if (form) {
 
             form.reportValidity();
 
-            // Ally: подсветка проблемных полей
+            // Подсветка невалидных полей
             [...form.elements].forEach(el => {
-                if (el.willValidate) el.toggleAttribute('aria-invalid', !el.checkValidity());
+                if (el.willValidate) {
+                    el.toggleAttribute('aria-invalid', !el.checkValidity());
+                }
             });
+
             return;
         }
 
-        // 3) Успешная «отправка» (без сервера)
+        // Успешная «отправка» без сервера
         e.preventDefault();
-        // Если форма внутри <dialog>, закрываем окно:
+
         if (dlg) {
             dlg.close('success');
         }
+
         form.reset();
-        alert('Сообщение отправлено!');
+        showSuccessMessage('Заявка отправлена! Я свяжусь с вами в ближайшее время.');
     });
 }
 
-// Маска телефона (дополнительно)
+// ================== МАСКА ТЕЛЕФОНА ==================
+
 const phone = document.getElementById('phone');
+
 if (phone) {
     phone.addEventListener('input', () => {
-        const digits = phone.value.replace(/\D/g,'').slice(0,11);
+        const digits = phone.value.replace(/\D/g, '').slice(0, 11);
         const d = digits.replace(/^8/, '7');
-        const parts = []
+        const parts = [];
+
         if (d.length > 0) parts.push('+7');
-        if (d.length > 1) parts.push(' (' + d.slice(1,4));
+        if (d.length > 1) parts.push(' (' + d.slice(1, 4));
         if (d.length >= 4) parts[parts.length - 1] += ')';
-        if (d.length >= 5) parts.push(' ' + d.slice(4,7));
-        if (d.length >= 8) parts.push('-' + d.slice(7,9));
-        if (d.length >= 10) parts.push('-' + d.slice(9,11));
+        if (d.length >= 5) parts.push(' ' + d.slice(4, 7));
+        if (d.length >= 8) parts.push('-' + d.slice(7, 9));
+        if (d.length >= 10) parts.push('-' + d.slice(9, 11));
+
         phone.value = parts.join('');
     });
 }
-// В конец файла main.js добавь:
 
-// Дополнительная логика для страницы контактов
-if (form && window.location.pathname.includes('contacts')) {
-    form.addEventListener('submit', (e) => {
-        // ... существующая логика валидации ...
-        
-        // Заменить alert на более красивое сообщение
-        if (dlg && form.checkValidity()) {
-            e.preventDefault();
-            dlg.close('success');
-            form.reset();
-            
-            // Показать уведомление об успехе
-            showSuccessMessage('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
-        }
-    });
-}
+// ================== КРАСИВОЕ УВЕДОМЛЕНИЕ ==================
 
-// Функция для красивого уведомления
 function showSuccessMessage(message) {
     const notification = document.createElement('div');
     notification.style.cssText = `
@@ -110,27 +109,29 @@ function showSuccessMessage(message) {
         font-weight: 600;
         animation: slideIn 0.3s ease;
     `;
-    
     notification.textContent = message;
     document.body.appendChild(notification);
-    
-    // Убрать уведомление через 4 секунды
+
+    // Убираем уведомление через 4 секунды
     setTimeout(() => {
         notification.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => notification.remove(), 300);
     }, 4000);
-}
 
-// CSS анимации через JavaScript
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+    // Добавляем CSS-анимации один раз
+    if (!document.getElementById('successMessageAnimations')) {
+        const style = document.createElement('style');
+        style.id = 'successMessageAnimations';
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to   { transform: translateX(0);   opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0);   opacity: 1; }
+                to   { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
     }
-    @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-    }
-`;
-document.head.appendChild(style);
+}

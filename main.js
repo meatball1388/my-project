@@ -1,9 +1,9 @@
 // ================== МОДАЛЬНОЕ ОКНО КОНТАКТОВ ==================
 
-const dlg       = document.getElementById('contactDialog');
-const openBtn   = document.getElementById('openDialog');
-const closeBtn  = document.getElementById('closeDialog');
-const form      = document.getElementById('contactForm');
+const dlg      = document.getElementById('contactDialog');
+const openBtn  = document.getElementById('openDialog');
+const closeBtn = document.getElementById('closeDialog');
+const form     = document.getElementById('contactForm');
 
 let lastActive = null;
 
@@ -12,7 +12,8 @@ if (openBtn && dlg) {
     openBtn.addEventListener('click', () => {
         lastActive = document.activeElement;
         dlg.showModal();
-        dlg.querySelector('input, select, textarea, button')?.focus();
+        const firstField = dlg.querySelector('input, select, textarea, button');
+        if (firstField) firstField.focus();
     });
 }
 
@@ -27,7 +28,7 @@ if (closeBtn && dlg) {
 // Возврат фокуса после закрытия
 if (dlg) {
     dlg.addEventListener('close', () => {
-        lastActive?.focus();
+        if (lastActive) lastActive.focus();
     });
 }
 
@@ -38,12 +39,12 @@ if (form) {
         // Сброс кастомных сообщений
         [...form.elements].forEach(el => el.setCustomValidity?.(''));
 
-        // Базовая HTML5-валидация
+        // Базовая HTML5‑валидация
         if (!form.checkValidity()) {
             e.preventDefault();
 
             const email = form.elements.email;
-            if (email?.validity.typeMismatch) {
+            if (email && email.validity.typeMismatch) {
                 email.setCustomValidity('Введите корректный e-mail, например name@example.com');
             }
 
@@ -118,20 +119,48 @@ function showSuccessMessage(message) {
         setTimeout(() => notification.remove(), 300);
     }, 4000);
 
-    // Добавляем CSS-анимации один раз
+    // Добавляем CSS‑анимации один раз
     if (!document.getElementById('successMessageAnimations')) {
         const style = document.createElement('style');
         style.id = 'successMessageAnimations';
         style.textContent = `
             @keyframes slideIn {
                 from { transform: translateX(100%); opacity: 0; }
-                to   { transform: translateX(0);   opacity: 1; }
+                to   { transform: translateX(0);    opacity: 1; }
             }
             @keyframes slideOut {
-                from { transform: translateX(0);   opacity: 1; }
+                from { transform: translateX(0);    opacity: 1; }
                 to   { transform: translateX(100%); opacity: 0; }
             }
         `;
         document.head.appendChild(style);
     }
+}
+
+// ================== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ==================
+
+const themeToggle = document.getElementById('themeToggle');
+
+if (themeToggle) {
+    // восстановление сохранённой темы
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+        document.body.classList.add('theme--dark');
+        themeToggle.classList.add('theme-toggle--dark');
+        themeToggle.textContent = 'Светлая тема';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('theme--dark');
+
+        if (isDark) {
+            themeToggle.classList.add('theme-toggle--dark');
+            themeToggle.textContent = 'Светлая тема';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeToggle.classList.remove('theme-toggle--dark');
+            themeToggle.textContent = 'Тёмная тема';
+            localStorage.setItem('theme', 'light');
+        }
+    });
 }

@@ -20,12 +20,21 @@
             border-radius: 12px;
             padding: 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.3s ease;
+            animation: fadeIn 0.3s ease;
+            /* только прозрачность */
             max-width: 500px;
             width: 90vw;
             max-height: 90vh;
             overflow-y: auto;
+
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* фиксированное центрирование */
         }
+
+
 
         .modal-header {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
@@ -131,17 +140,10 @@
             }
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px) scale(0.9);
-            }
+        /* старую @keyframes slideIn можно удалить или не использовать */
 
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
+
+
 
         /* Адаптивность модалки */
         @media (max-width: 600px) {
@@ -162,61 +164,72 @@
 </head>
 
 <body>
-    <div class="page-container">
+    <div class="page">
+
         <header class="header">
-            <h1>Контакты</h1>
+            <h1 class="header__title">Контакты</h1>
+            <p class="header__group">Алёхин Алексей Витальевич — ЭФБО-07-24</p>
         </header>
 
-        <nav class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        <nav class="nav nav--main">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="news.html">Новости</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="practices.html">Практики</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="goods.html">Товары</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
             </ul>
         </nav>
 
-        <main class="content">
-            <section class="contacts-container">
-                <h2 class="section-title">Мои контакты</h2>
+        <main class="main">
+            <section class="contacts">
+                <h2 class="contacts__title">Мои контакты</h2>
 
-                <!-- Оставляем твой текст/данные как есть -->
-                <article class="contact-info">
-                    <h3>Электронная почта</h3>
-                    <p>extrahamster2017@yandex.ru</p>
-                </article>
+                <div class="contacts__info">
+                    <article class="contacts__block">
+                        <h3 class="contacts__block-title">Электронная почта</h3>
+                        <p class="contacts__block-text">extrahamster2017@yandex.ru</p>
+                    </article>
 
-                <article class="contact-info">
-                    <h3>Другие способы связи</h3>
-                    <p>@MUHUCTP_0I0UH4HCOB - телеграмм</p>
-                </article>
-
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <h3 class="contact-title">Телефон</h3>
-                        <p class="contact-info">+79853800119</p>
-                    </div>
-                    <div class="contact-card">
-                        <h3 class="contact-title">Время связи</h3>
-                        <p class="contact-info">09:00-21:00</p>
-                    </div>
-                    <div class="contact-card">
-                        <h3 class="contact-title">Социальные сети</h3>
-                        <p class="contact-info">@MUHUCTP_0I0UH4HCOB</p>
-                    </div>
+                    <article class="contacts__block">
+                        <h3 class="contacts__block-title">Другие способы связи</h3>
+                        <p class="contacts__block-text">@MUHUCTP_0I0UH4HCOB - телеграмм</p>
+                    </article>
                 </div>
 
-                <!-- Кнопка открытия модалки -->
+                <div class="contacts__list">
+                    <article class="contact-item">
+                        <h3 class="contact-item__title">Телефон</h3>
+                        <p class="contact-item__value">+79853800119</p>
+                    </article>
+                    <article class="contact-item">
+                        <h3 class="contact-item__title">Время связи</h3>
+                        <p class="contact-item__value">09:00-21:00</p>
+                    </article>
+                    <article class="contact-item">
+                        <h3 class="contact-item__title">Социальные сети</h3>
+                        <p class="contact-item__value">@MUHUCTP_0I0UH4HCOB</p>
+                    </article>
+                </div>
+
                 <button id="openDialog" class="contact-button">Связаться со мной</button>
             </section>
         </main>
 
         <footer class="footer">
-            <p>&copy; 2025 Алёхин Алексей Витальевич, ЭФБО-07-24</p>
+            <p class="footer__text">&copy; 2025 Алёхин Алексей Витальевич, ЭФБО-07-24</p>
         </footer>
 
-        <!-- Модальное окно -->
         <dialog id="contactDialog">
             <div class="modal-header">
                 <h2>Форма обратной связи</h2>

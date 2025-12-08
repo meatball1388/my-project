@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты — Алёхин Алексей</title>
+    <title>Контакты</title>
     <link rel="stylesheet" href="../style/styles.css">
 
     <style>
+        /* ==== МОДАЛЬНОЕ ОКНО CONTACT DIALOG ==== */
+
         dialog::backdrop {
             background: rgba(0, 0, 0, 0.6);
             animation: fadeIn 0.3s ease;
@@ -18,16 +20,21 @@
             border-radius: 12px;
             padding: 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.3s ease;
+            /* только прозрачность */
             max-width: 500px;
             width: 90vw;
             max-height: 90vh;
             overflow-y: auto;
+
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: fadeIn 0.3s ease;
+            /* фиксированное центрирование */
         }
+
+
 
         .modal-header {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
@@ -133,6 +140,12 @@
             }
         }
 
+        /* старую @keyframes slideIn можно удалить или не использовать */
+
+
+
+
+        /* Адаптивность модалки */
         @media (max-width: 600px) {
             dialog {
                 margin: 1rem;
@@ -147,99 +160,76 @@
                 width: 100%;
             }
         }
-
-        .contact-input {
-            width: 100%;
-            padding: 0.6rem 0.75rem;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-            font-size: 14px;
-        }
-
-        .contact-input:focus {
-            outline: none;
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
-        }
     </style>
 </head>
 
 <body>
-    <div class="site">
+    <div class="page">
 
-        <!-- Шапка -->
-        <header class="site-header">
-            <div class="site-header__logo">AA</div>
-            <div class="site-header__info">
-                <h1 class="site-header__title">Контакты</h1>
-                <p class="site-header__subtitle">Алёхин Алексей Витальевич — ЭФБО-07-24</p>
-            </div>
+        <header class="header">
+            <h1 class="header__title">Контакты</h1>
+            <p class="header__group">Алёхин Алексей Витальевич — ЭФБО-07-24</p>
         </header>
 
-        <!-- Навигация -->
-        <nav class="site-nav">
-            <ul class="site-nav__list">
-                <li class="site-nav__item">
-                    <a href="../index.html" class="site-nav__link">Главная</a>
+        <nav class="nav nav--main">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
                 </li>
-                <li class="site-nav__item">
-                    <a href="projects.html" class="site-nav__link">Проекты</a>
+                <li class="nav__item">
+                    <a class="nav__link" href="news.html">Новости</a>
                 </li>
-                <li class="site-nav__item">
-                    <a href="diary.html" class="site-nav__link">Дневник</a>
+                <li class="nav__item">
+                    <a class="nav__link" href="practices.html">Практики</a>
                 </li>
-                <li class="site-nav__item site-nav__item--active">
-                    <a href="contacts.html" class="site-nav__link">Контакты</a>
+                <li class="nav__item">
+                    <a class="nav__link" href="goods.html">Товары</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
                 </li>
             </ul>
         </nav>
 
-        <!-- Контент -->
-        <main class="site-main">
-            <section>
-                <h2 class="section-title">Мои контакты</h2>
+        <main class="main">
+            <section class="contacts">
+                <h2 class="contacts__title">Мои контакты</h2>
 
-                <!-- Карточки контактов (новые классы) -->
-                <div class="contacts-grid">
-                    <article class="contact-card">
-                        <h3 class="contact-card__title">Электронная почта</h3>
-                        <p class="contact-card__text">extrahamster2017@yandex.ru</p>
+                <div class="contacts__info">
+                    <article class="contacts__block">
+                        <h3 class="contacts__block-title">Электронная почта</h3>
+                        <p class="contacts__block-text">extrahamster2017@yandex.ru</p>
                     </article>
 
-                    <article class="contact-card">
-                        <h3 class="contact-card__title">Другие способы связи</h3>
-                        <p class="contact-card__text">@MUHUCTP_0I0UH4HCOB — телеграмм</p>
-                    </article>
-
-                    <article class="contact-card">
-                        <h3 class="contact-card__title">Телефон</h3>
-                        <p class="contact-card__text">+7 985 380 01 19</p>
-                    </article>
-
-                    <article class="contact-card">
-                        <h3 class="contact-card__title">Время связи</h3>
-                        <p class="contact-card__text">09:00–21:00</p>
-                    </article>
-
-                    <article class="contact-card">
-                        <h3 class="contact-card__title">Социальные сети</h3>
-                        <p class="contact-card__text">@MUHUCTP_0I0UH4HCOB</p>
+                    <article class="contacts__block">
+                        <h3 class="contacts__block-title">Другие способы связи</h3>
+                        <p class="contacts__block-text">@MUHUCTP_0I0UH4HCOB - телеграмм</p>
                     </article>
                 </div>
 
-                <h3 class="section-subtitle">Связаться со мной</h3>
+                <div class="contacts__list">
+                    <article class="contact-item">
+                        <h3 class="contact-item__title">Телефон</h3>
+                        <p class="contact-item__value">+79853800119</p>
+                    </article>
+                    <article class="contact-item">
+                        <h3 class="contact-item__title">Время связи</h3>
+                        <p class="contact-item__value">09:00-21:00</p>
+                    </article>
+                    <article class="contact-item">
+                        <h3 class="contact-item__title">Социальные сети</h3>
+                        <p class="contact-item__value">@MUHUCTP_0I0UH4HCOB</p>
+                    </article>
+                </div>
 
-                <!-- Кнопка вызывает модалку -->
-                <button id="openDialog" class="btn">Открыть форму</button>
+                <button id="openDialog" class="contact-button">Связаться со мной</button>
             </section>
         </main>
 
-        <!-- Футер -->
-        <footer class="site-footer">
-            <p class="site-footer__text">&copy; 2025 Алёхин Алексей Витальевич, ЭФБО-07-24</p>
+        <footer class="footer">
+            <p class="footer__text">&copy; 2025 Алёхин Алексей Витальевич, ЭФБО-07-24</p>
         </footer>
 
-        <!-- Модальное окно с формой -->
         <dialog id="contactDialog">
             <div class="modal-header">
                 <h2>Форма обратной связи</h2>
@@ -286,7 +276,6 @@
                 </form>
             </div>
         </dialog>
-
     </div>
 
     <script src="../main.js"></script>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учебный дневник — Алёхин Алексей</title>
+    <link rel="stylesheet" href="../style/styles.css">
+
+</head>
+
+<body>
+    <div class="site">
+
+        <header class="site-header">
+            <div class="site-header__logo"></div>
+            <div class="site-header__info">
+                <h1 class="site-header__title">Алёхин Алексей Витальевич</h1>
+                <p class="site-header__subtitle">Учебный дневник</p>
+            </div>
+        </header>
+
+        <nav class="site-nav">
+            <ul class="site-nav__list">
+                <li class="site-nav__item">
+                    <a href="../index.html" class="site-nav__link">Главная</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="projects.html" class="site-nav__link">Проекты</a>
+                </li>
+                <li class="site-nav__item site-nav__item--active">
+                    <a href="diary.html" class="site-nav__link">Дневник</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="contacts.html" class="site-nav__link">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <main class="site-main">
+            <section class="diary">
+                <h2 class="section-title">Мой учебный прогресс</h2>
+
+                <div class="diary__list">
+                    <article class="diary-item diary-item--done">
+                        <p class="diary-item__date">15 дек</p>
+                        <p class="diary-item__text">Верстка макета сайта</p>
+                    </article>
+                    <article class="diary-item diary-item--done">
+                        <p class="diary-item__date">10 дек</p>
+                        <p class="diary-item__text">JavaScript — основы</p>
+                    </article>
+                    <article class="diary-item diary-item--progress">
+                        <p class="diary-item__date">05 дек</p>
+                        <p class="diary-item__text">Работа с формами</p>
+                    </article>
+                    <article class="diary-item diary-item--progress">
+                        <p class="diary-item__date">01 дек</p>
+                        <p class="diary-item__text">Адаптивный дизайн</p>
+                    </article>
+                </div>
+
+                <h3 class="section-subtitle">Текущие курсы</h3>
+
+                <div class="skills-block__grid">
+                    <div class="skill-bar">
+                        <div class="skill-bar__header">
+                            <span>Веб‑разработка</span>
+                            <span class="skill-bar__value">90%</span>
+                        </div>
+                        <div class="skill-bar__track">
+                            <div class="skill-bar__fill skill-bar__fill--primary" style="width: 90%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar">
+                        <div class="skill-bar__header">
+                            <span>JavaScript</span>
+                            <span class="skill-bar__value">70%</span>
+                        </div>
+                        <div class="skill-bar__track">
+                            <div class="skill-bar__fill skill-bar__fill--primary" style="width: 70%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar">
+                        <div class="skill-bar__header">
+                            <span>React</span>
+                            <span class="skill-bar__value">50%</span>
+                        </div>
+                        <div class="skill-bar__track">
+                            <div class="skill-bar__fill skill-bar__fill--primary" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn diary__add-btn">Добавить запись</button>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p class="site-footer__text">© 2025 Алёхин Алексей Витальевич</p>
+        </footer>
+    </div>
+</body>
+
+</html>

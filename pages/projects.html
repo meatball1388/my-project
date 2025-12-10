@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Проекты — Алёхин Алексей</title>
     <link rel="stylesheet" href="../style/styles.css">
-
 </head>
 
 <body>
     <div class="site">
 
+        <!-- Шапка -->
         <header class="site-header">
-            <div class="site-header__logo"></div>
+            <div class="site-header__logo">AA</div>
             <div class="site-header__info">
                 <h1 class="site-header__title">Алёхин Алексей Витальевич</h1>
-                <p class="site-header__subtitle">Студент‑разработчик</p>
+                <p class="site-header__subtitle">Студент группы ЭФБО-07-24</p>
             </div>
         </header>
 
+        <!-- Навигация -->
         <nav class="site-nav">
             <ul class="site-nav__list">
                 <li class="site-nav__item">
@@ -37,50 +38,48 @@
             </ul>
         </nav>
 
-
+        <!-- Контент -->
         <main class="site-main">
-            <section class="projects-full">
-                <header class="projects-full__header">
-                    <h2 class="section-title">Мои проекты</h2>
-                    <div class="projects-full__filters">
-                        <button class="chip chip--active">Все</button>
-                        <button class="chip">HTML</button>
-                        <button class="chip">JS</button>
-                        <button class="chip">React</button>
-                    </div>
-                </header>
-
-                <div class="projects-full__grid">
-                    <article class="project-card project-card--clickable">
-                        <div class="project-card__thumb"></div>
-                        <h3 class="project-card__title">Личный сайт</h3>
-                        <p class="project-card__tech">HTML, CSS</p>
-                        <p class="project-card__desc">Адаптивное портфолио студента.</p>
-                    </article>
-
-                    <article class="project-card project-card--clickable">
-                        <div class="project-card__thumb"></div>
-                        <h3 class="project-card__title">Todo‑приложение</h3>
-                        <p class="project-card__tech">JavaScript</p>
-                        <p class="project-card__desc">Управление задачами, сохранение в LocalStorage.</p>
-                    </article>
-
-                    <article class="project-card project-card--clickable">
-                        <div class="project-card__thumb"></div>
-                        <h3 class="project-card__title">Интернет‑магазин</h3>
-                        <p class="project-card__tech">React</p>
-                        <p class="project-card__desc">Каталог, корзина, фильтрация.</p>
-                    </article>
+            <div class="projects-full__header">
+                <h2 class="section-title">Мои проекты</h2>
+                <div class="projects-full__filters">
+                    <button class="chip chip--active">Все</button>
+                    <button class="chip">HTML</button>
+                    <button class="chip">JS</button>
+                    <button class="chip">React</button>
                 </div>
-            </section>
+            </div>
+
+            <div class="projects-full__grid">
+                <article class="project-card">
+                    <img src="../images/project1.webp" alt="Личный сайт" class="project-card__thumb">
+                    <h3 class="project-card__title">Личный сайт</h3>
+                    <p class="project-card__tech">HTML, CSS</p>
+                    <p class="project-card__desc">Адаптивное портфолио студента.</p>
+                </article>
+
+                <article class="project-card">
+                    <img src="../images/project2.webp" alt="Todo-приложение" class="project-card__thumb">
+                    <h3 class="project-card__title">Todo-приложение</h3>
+                    <p class="project-card__tech">JavaScript</p>
+                    <p class="project-card__desc">Управление задачами, сохранение в LocalStorage.</p>
+                </article>
+
+                <article class="project-card">
+                    <img src="../images/project3.webp" alt="Интернет-магазин" class="project-card__thumb">
+                    <h3 class="project-card__title">Интернет-магазин</h3>
+                    <p class="project-card__tech">React</p>
+                    <p class="project-card__desc">Каталог, корзина, фильтрация.</p>
+                </article>
+            </div>
         </main>
 
+        <!-- Футер -->
         <footer class="site-footer">
-            <p class="site-footer__text">© 2025 Алёхин Алексей Витальевич</p>
+            <p class="site-footer__text">© 2025 Алёхин Алексей Витальевич. Контакты см. на соответствующей странице.</p>
         </footer>
-    </div>
 
-    <script src="main.js"></script>
+    </div>
 </body>
 
 </html>

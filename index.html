@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,10 @@
   <link rel="stylesheet" href="style/styles.css">
 </head>
 
+
 <body>
   <div class="site">
+
 
     <!-- Шапка -->
     <header class="site-header">
@@ -19,6 +22,7 @@
         <p class="site-header__subtitle">Студент группы ЭФБО-07-24</p>
       </div>
     </header>
+
 
     <!-- Навигация -->
     <nav class="site-nav">
@@ -39,8 +43,10 @@
     </nav>
 
 
+
     <!-- Контент -->
     <main class="site-main">
+
 
       <!-- Блок приветствия -->
       <section class="hero">
@@ -57,9 +63,10 @@
             Интересуюсь современными веб‑технологиями и стараюсь превращать
             учебные задания в красивые законченные работы.
           </p>
-          <a href="files/resume.pdf" class="btn" download>Скачать резюме</a>
+          <button id="downloadResume" class="btn">Скачать резюме</button>
         </div>
       </section>
+
 
       <!-- Навыки -->
       <section class="skills-block">
@@ -75,6 +82,7 @@
             </div>
           </div>
 
+
           <div class="skill-bar">
             <div class="skill-bar__header">
               <span>JavaScript</span>
@@ -85,6 +93,7 @@
             </div>
           </div>
 
+
           <div class="skill-bar">
             <div class="skill-bar__header">
               <span>Bootstrap</span>
@@ -94,6 +103,7 @@
               <div class="skill-bar__fill skill-bar__fill--primary" style="width: 85%;"></div>
             </div>
           </div>
+
 
           <div class="skill-bar">
             <div class="skill-bar__header">
@@ -107,38 +117,57 @@
         </div>
       </section>
 
+
       <!-- Лучшие проекты -->
       <section class="projects-preview">
         <h2 class="section-title">Лучшие проекты</h2>
         <div class="projects-preview__grid">
           <article class="project-card">
-            <div class="project-card__thumb"></div>
+            <img src="images/project1.webp" alt="Личный сайт" class="project-card__thumb">
             <h3 class="project-card__title">Личный сайт</h3>
             <p class="project-card__tech">HTML, CSS</p>
           </article>
 
+
           <article class="project-card">
-            <div class="project-card__thumb"></div>
+            <img src="images/project2.webp" alt="Todo-приложение" class="project-card__thumb">
             <h3 class="project-card__title">Todo-приложение</h3>
             <p class="project-card__tech">JavaScript, LocalStorage</p>
           </article>
 
+
           <article class="project-card">
-            <div class="project-card__thumb"></div>
+            <img src="images/project3.webp" alt="Интернет-магазин" class="project-card__thumb">
             <h3 class="project-card__title">Интернет-магазин</h3>
             <p class="project-card__tech">React</p>
           </article>
         </div>
       </section>
 
+
+
     </main>
+
 
     <!-- Футер -->
     <footer class="site-footer">
       <p class="site-footer__text">© 2025 Алёхин Алексей Витальевич. Контакты см. на соответствующей странице.</p>
     </footer>
 
+
   </div>
+
+  <script>
+    document.getElementById('downloadResume').addEventListener('click', function () {
+      const link = document.createElement('a');
+      link.href = 'resume.docx';
+      link.download = 'resume.docx';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
 </body>
+
 
 </html>

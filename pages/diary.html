@@ -4,22 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Учебный дневник — Алёхин Алексей</title>
+    <title>Дневник — Алёхин Алексей</title>
     <link rel="stylesheet" href="../style/styles.css">
-
 </head>
 
 <body>
     <div class="site">
 
+        <!-- Шапка -->
         <header class="site-header">
-            <div class="site-header__logo"></div>
+            <div class="site-header__logo">AA</div>
             <div class="site-header__info">
                 <h1 class="site-header__title">Алёхин Алексей Витальевич</h1>
                 <p class="site-header__subtitle">Учебный дневник</p>
             </div>
         </header>
 
+        <!-- Навигация -->
         <nav class="site-nav">
             <ul class="site-nav__list">
                 <li class="site-nav__item">
@@ -37,36 +38,17 @@
             </ul>
         </nav>
 
-
+        <!-- Контент -->
         <main class="site-main">
-            <section class="diary">
-                <h2 class="section-title">Мой учебный прогресс</h2>
 
-                <div class="diary__list">
-                    <article class="diary-item diary-item--done">
-                        <p class="diary-item__date">15 дек</p>
-                        <p class="diary-item__text">Верстка макета сайта</p>
-                    </article>
-                    <article class="diary-item diary-item--done">
-                        <p class="diary-item__date">10 дек</p>
-                        <p class="diary-item__text">JavaScript — основы</p>
-                    </article>
-                    <article class="diary-item diary-item--progress">
-                        <p class="diary-item__date">05 дек</p>
-                        <p class="diary-item__text">Работа с формами</p>
-                    </article>
-                    <article class="diary-item diary-item--progress">
-                        <p class="diary-item__date">01 дек</p>
-                        <p class="diary-item__text">Адаптивный дизайн</p>
-                    </article>
-                </div>
+            <!-- Текущие курсы -->
+            <section class="courses-section">
+                <h2 class="section-title">Текущие курсы</h2>
 
-                <h3 class="section-subtitle">Текущие курсы</h3>
-
-                <div class="skills-block__grid">
+                <div class="skills-block__grid" id="skillsGrid">
                     <div class="skill-bar">
                         <div class="skill-bar__header">
-                            <span>Веб‑разработка</span>
+                            <span>Веб-разработка</span>
                             <span class="skill-bar__value">90%</span>
                         </div>
                         <div class="skill-bar__track">
@@ -95,14 +77,186 @@
                     </div>
                 </div>
 
-                <button class="btn diary__add-btn">Добавить запись</button>
+                <button id="openCourseForm" class="btn" style="margin-top: 20px;">Добавить запись</button>
             </section>
+
+            <!-- Мой учебный прогресс -->
+            <section class="diary-section">
+                <h2 class="section-title">Мой учебный прогресс</h2>
+
+                <div class="diary__list" id="diaryList">
+                    <div class="diary-item diary-item--done">
+                        <span class="diary-item__date">15 дек</span>
+                        <span class="diary-item__text">Верстка макета сайта</span>
+                    </div>
+
+                    <div class="diary-item diary-item--done">
+                        <span class="diary-item__date">10 дек</span>
+                        <span class="diary-item__text">JavaScript — основы</span>
+                    </div>
+
+                    <div class="diary-item diary-item--progress">
+                        <span class="diary-item__date">05 дек</span>
+                        <span class="diary-item__text">Работа с формами</span>
+                    </div>
+
+                    <div class="diary-item diary-item--progress">
+                        <span class="diary-item__date">01 дек</span>
+                        <span class="diary-item__text">Адаптивный дизайн</span>
+                    </div>
+                </div>
+            </section>
+
         </main>
 
+        <!-- Футер -->
         <footer class="site-footer">
-            <p class="site-footer__text">© 2025 Алёхин Алексей Витальевич</p>
+            <p class="site-footer__text">© 2025 Алёхин Алексей Витальевич. Контакты см. на соответствующей странице.</p>
         </footer>
+
     </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ФОРМЫ -->
+    <dialog class="course-modal" id="courseModal">
+        <div class="course-modal__content">
+            <div class="course-modal__header">
+                <h3 class="course-modal__title">Добавить курс</h3>
+                <button type="button" class="course-modal__close" id="closeModal" aria-label="Закрыть">✕</button>
+            </div>
+
+            <form class="course-form" id="courseForm">
+                <div class="form-group">
+                    <label for="courseName" class="form-label">Название курса</label>
+                    <input type="text" id="courseName" placeholder="Введите название" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="courseProgress" class="form-label">Прогресс (%)</label>
+                    <input type="number" id="courseProgress" min="0" max="100" placeholder="0-100" class="form-input"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="courseDate" class="form-label">Дата</label>
+                    <input type="text" id="courseDate" placeholder="Например: 15 дек" class="form-input" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn">Добавить</button>
+                    <button type="button" class="btn-secondary" id="cancelBtn">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+        console.log('Скрипт загружен');
+
+        const courseModal = document.getElementById('courseModal');
+        const openBtn = document.getElementById('openCourseForm');
+        const closeBtn = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const courseForm = document.getElementById('courseForm');
+        const skillsGrid = document.getElementById('skillsGrid');
+        const diaryList = document.getElementById('diaryList');
+
+        console.log('courseModal:', courseModal);
+        console.log('openBtn:', openBtn);
+
+        // Открытие модального окна
+        if (openBtn) {
+            openBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Клик по кнопке');
+                if (courseModal) {
+                    courseModal.showModal();
+                    document.getElementById('courseName').focus();
+                }
+            });
+        }
+
+        // Закрытие модального окна
+        const closeModal = () => {
+            console.log('Закрытие модального окна');
+            if (courseModal) {
+                courseModal.close();
+                if (courseForm) courseForm.reset();
+            }
+        };
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal();
+            });
+        }
+
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal();
+            });
+        }
+
+        // Закрытие при клике на backdrop
+        if (courseModal) {
+            courseModal.addEventListener('click', (e) => {
+                if (e.target === courseModal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Обработка формы
+        if (courseForm) {
+            courseForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                console.log('Отправка формы');
+
+                const courseName = document.getElementById('courseName').value;
+                const courseProgress = document.getElementById('courseProgress').value;
+                const courseDate = document.getElementById('courseDate').value;
+
+                if (!courseName || !courseProgress || !courseDate) {
+                    alert('Заполни все поля!');
+                    return;
+                }
+
+                console.log('Данные:', { courseName, courseProgress, courseDate });
+
+                // Создаём новый элемент в списке навыков
+                const newSkill = document.createElement('div');
+                newSkill.className = 'skill-bar';
+                newSkill.innerHTML = `
+          <div class="skill-bar__header">
+            <span>${courseName}</span>
+            <span class="skill-bar__value">${courseProgress}%</span>
+          </div>
+          <div class="skill-bar__track">
+            <div class="skill-bar__fill skill-bar__fill--primary" style="width: ${courseProgress}%;"></div>
+          </div>
+        `;
+
+                if (skillsGrid) {
+                    skillsGrid.appendChild(newSkill);
+                }
+
+                // Создаём новый элемент в дневнике
+                const newDiaryItem = document.createElement('div');
+                newDiaryItem.className = 'diary-item diary-item--progress';
+                newDiaryItem.innerHTML = `
+          <span class="diary-item__date">${courseDate}</span>
+          <span class="diary-item__text">${courseName}</span>
+        `;
+
+                if (diaryList) {
+                    diaryList.insertBefore(newDiaryItem, diaryList.firstChild);
+                }
+
+                closeModal();
+            });
+        }
+    </script>
 </body>
 
 </html>

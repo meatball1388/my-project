@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Портфолио — Алёхин Алексей</title>
   <link rel="stylesheet" href="style/styles.css">
+  <!-- Подключаем библиотеку для создания PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 
@@ -145,7 +147,6 @@
       </section>
 
 
-
     </main>
 
 
@@ -158,13 +159,57 @@
   </div>
 
   <script>
+    // ========== СКАЧИВАНИЕ РЕЗЮМЕ PDF ==========
     document.getElementById('downloadResume').addEventListener('click', function () {
-      const link = document.createElement('a');
-      link.href = 'resume.docx';
-      link.download = 'resume.docx';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      // Содержимое резюме
+      const resumeContent = `
+        <div style="font-family: Arial, sans-serif; padding: 20px;">
+          <h1 style="text-align: center; margin-bottom: 5px;">Алёхин Алексей Витальевич</h1>
+          <p style="text-align: center; color: #666; margin-top: 0;">Студент группы ЭФБО-07-24</p>
+          
+          <hr style="margin: 20px 0;">
+          
+          <h2 style="font-size: 16px; border-bottom: 2px solid #333; padding-bottom: 5px;">КОНТАКТЫ</h2>
+          <p style="margin: 10px 0;">Email: alexey@example.com</p>
+          <p style="margin: 10px 0;">Телефон: +7 (900) 123-45-67</p>
+          <p style="margin: 10px 0;">GitHub: github.com/aloekhin</p>
+          
+          <h2 style="font-size: 16px; border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">НАВЫКИ</h2>
+          <p style="margin: 8px 0;">• HTML / CSS - 90%</p>
+          <p style="margin: 8px 0;">• JavaScript - 80%</p>
+          <p style="margin: 8px 0;">• Bootstrap - 85%</p>
+          <p style="margin: 8px 0;">• React - 60%</p>
+          <p style="margin: 8px 0;">• SQL</p>
+          <p style="margin: 8px 0;">• Git / GitHub</p>
+          
+          <h2 style="font-size: 16px; border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">ОПЫТ ПРОЕКТОВ</h2>
+          <p style="margin: 8px 0;"><strong>Личное портфолио</strong> - HTML, CSS, Адаптивное портфолио студента</p>
+          <p style="margin: 8px 0;"><strong>Todo-приложение</strong> - JavaScript, LocalStorage, Управление задачами</p>
+          <p style="margin: 8px 0;"><strong>Интернет-магазин</strong> - React, Каталог товаров с фильтрацией</p>
+          
+          <h2 style="font-size: 16px; border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">ОБРАЗОВАНИЕ</h2>
+          <p style="margin: 8px 0;">Направление: Фронтенд и бэкенд разработка</p>
+          <p style="margin: 8px 0;">Курс: 2</p>
+          
+          <h2 style="font-size: 16px; border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">О СЕБЕ</h2>
+          <p style="margin: 8px 0;">Увлечён веб-разработкой, активно участвую в учебных проектах. Люблю создавать красивые и функциональные интерфейсы. Постоянно учусь новым технологиям.</p>
+        </div>
+      `;
+
+      // Настройки для PDF
+      const element = document.createElement('div');
+      element.innerHTML = resumeContent;
+
+      const opt = {
+        margin: 10,
+        filename: 'resume_Alehin_Alexey.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+      };
+
+      // Генерируем и скачиваем PDF
+      html2pdf().set(opt).from(element).save();
     });
   </script>
 </body>
